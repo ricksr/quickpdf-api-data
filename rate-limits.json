@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "tier": "included",
+  "limits": {
+    "maxFileBytes": 15728640,
+    "maxFileMiB": 15,
+    "perHour": 60,
+    "perDay": 500,
+    "concurrentJobsPerInstance": 2,
+    "processingTimeoutSeconds": 25
+  },
+  "responseHeaders": ["X-RateLimit-Limit", "X-RateLimit-Remaining", "X-RateLimit-Reset"],
+  "usageEndpoint": "GET /api/v1/usage"
+}

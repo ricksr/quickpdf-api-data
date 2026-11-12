@@ -1,0 +1,49 @@
+{
+  "version": "1",
+  "tier": "included",
+  "apiBaseUrl": "https://api.quickpdftools.net",
+  "limits": {
+    "maxFileBytes": 15728640,
+    "perHour": 60,
+    "perDay": 500,
+    "concurrentJobsPerInstance": 2
+  },
+  "operations": [
+    {
+      "id": "protect",
+      "method": "POST",
+      "path": "/api/v1/pdf/protect",
+      "scope": "pdf:protect",
+      "description": "Encrypt a PDF with a password (AES-256).",
+      "multipart": [
+        "file",
+        "password"
+      ]
+    },
+    {
+      "id": "unlock",
+      "method": "POST",
+      "path": "/api/v1/pdf/unlock",
+      "scope": "pdf:unlock",
+      "description": "Remove password encryption when you know the password.",
+      "multipart": [
+        "file",
+        "password"
+      ]
+    },
+    {
+      "id": "repair",
+      "method": "POST",
+      "path": "/api/v1/pdf/repair",
+      "scope": "pdf:repair",
+      "description": "Rebuild a damaged PDF structure with qpdf.",
+      "multipart": [
+        "file"
+      ]
+    }
+  ],
+  "authentication": "Authorization: Bearer qpdf_live_…",
+  "documentation": "/developers/",
+  "openapi": "/developers/openapi.yaml",
+  "openData": "/developers/oss/manifest.json"
+}

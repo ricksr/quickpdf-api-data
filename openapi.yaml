@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Quick PDF Tools API
+  version: "1"
+  description: Server-side PDF protect, unlock, and repair. Requires an account API key.
+servers:
+  - url: https://api.quickpdftools.net
+    description: Production API host
+  - url: https://quickpdftools.net
+    description: Website (proxied /api/v1 when configured)
+paths:
+  /api/v1/capabilities:
+    get:
+      summary: List operations and limits
+      responses:
+        "200":
+          description: Capability catalog
+  /api/v1/usage:
+    get:
+      summary: Rate-limit status for the current key
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Usage snapshot
+        "401":
+          description: Missing or invalid API key
+  /api/v1/pdf/protect:
+    post:
+      summary: Password-protect a PDF
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file, password]
+              properties:
+                file:
+                  type: string
+                  format: binary
+                password:
+                  type: string
+      responses:
+        "200":
+          description: Encrypted PDF bytes
+          content:
+            application/pdf: {}
+        "401":
+          description: Unauthorized
+        "413":
+          description: File too large (max 15 MiB)
+        "429":
+          description: Rate limited
+  /api/v1/pdf/unlock:
+    post:
+      summary: Decrypt a PDF with a known password
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file, password]
+              properties:
+                file:
+                  type: string
+                  format: binary
+                password:
+                  type: string
+      responses:
+        "200":
+          description: Decrypted PDF
+          content:
+            application/pdf: {}
+  /api/v1/pdf/repair:
+    post:
+      summary: Rebuild a damaged PDF
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: Repaired PDF
+          content:
+            application/pdf: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key from the Developers portal (prefix qpdf_live_)

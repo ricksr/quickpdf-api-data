@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "Quick PDF Tools API v1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Generated open collection — import and set variables apiBase, apiKey"
+  },
+  "variable": [
+    {
+      "key": "apiBase",
+      "value": "https://api.quickpdftools.net"
+    },
+    {
+      "key": "apiKey",
+      "value": "qpdf_live_your_key_here"
+    }
+  ],
+  "item": [
+    {
+      "name": "Capabilities (no auth)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{apiBase}}/api/v1/capabilities"
+      }
+    },
+    {
+      "name": "Usage",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{apiKey}}"
+          }
+        ],
+        "url": "{{apiBase}}/api/v1/usage"
+      }
+    },
+    {
+      "name": "PDF protect",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{apiKey}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "single.pdf"
+            },
+            {
+              "key": "password",
+              "value": "YourPassword8",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "{{apiBase}}/api/v1/pdf/protect"
+      }
+    },
+    {
+      "name": "PDF unlock",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{apiKey}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "single.pdf"
+            },
+            {
+              "key": "password",
+              "value": "YourPassword8",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "{{apiBase}}/api/v1/pdf/unlock"
+      }
+    },
+    {
+      "name": "PDF repair",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{apiKey}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "single.pdf"
+            }
+          ]
+        },
+        "url": "{{apiBase}}/api/v1/pdf/repair"
+      }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "repositoryPath": ".",
+  "siteBase": "https://quickpdftools.net",
+  "apiBase": "https://api.quickpdftools.net",
+  "updatedAt": "2026-11-12",
+  "repository": "https://github.com/ricksr/quickpdf-api-data",
+  "assets": [
+    {
+      "name": "manifest",
+      "path": "manifest.json",
+      "mime": "application/json"
+    },
+    {
+      "name": "openapi",
+      "path": "openapi.yaml",
+      "mime": "text/yaml"
+    },
+    {
+      "name": "capabilities-live",
+      "url": "https://api.quickpdftools.net/api/v1/capabilities",
+      "mime": "application/json"
+    },
+    {
+      "name": "capabilities-snapshot",
+      "path": "capabilities.snapshot.json",
+      "mime": "application/json"
+    },
+    {
+      "name": "error-codes",
+      "path": "error-codes.json",
+      "mime": "application/json"
+    },
+    {
+      "name": "rate-limits",
+      "path": "rate-limits.json",
+      "mime": "application/json"
+    },
+    {
+      "name": "postman",
+      "path": "postman-collection.json",
+      "mime": "application/json"
+    },
+    {
+      "name": "readme",
+      "path": "README.md",
+      "mime": "text/markdown"
+    }
+  ],
+  "fixtures": [
+    {
+      "path": "fixtures/single.pdf",
+      "bytes": 912,
+      "purpose": "Minimal one-page PDF"
+    },
+    {
+      "path": "fixtures/doc-a.pdf",
+      "bytes": 1160,
+      "purpose": "Two labeled pages"
+    },
+    {
+      "path": "fixtures/five-pages.pdf",
+      "bytes": 2004,
+      "purpose": "Multi-page workload"
+    },
+    {
+      "path": "fixtures/locked.pdf",
+      "bytes": 1718,
+      "purpose": "AES encrypted; password secret123"
+    },
+    {
+      "path": "fixtures/damaged.pdf",
+      "bytes": 2006,
+      "purpose": "Broken startxref for repair tests"
+    },
+    {
+      "path": "fixtures/not-a-pdf.pdf",
+      "bytes": 25,
+      "purpose": "Negative control (not PDF)"
+    }
+  ]
+}

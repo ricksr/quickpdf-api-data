@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "description": "Stable error codes for Quick PDF Tools API v1 JSON responses",
+  "shape": { "error": "string", "code": "string" },
+  "codes": [
+    { "code": "unauthorized", "http": 401, "when": "Missing or invalid API key" },
+    { "code": "forbidden_scope", "http": 403, "when": "Key lacks scope for the operation" },
+    { "code": "invalid_password", "http": 400, "when": "Password empty, too long, or unsupported characters" },
+    { "code": "file_too_large", "http": 413, "when": "PDF body exceeds 15 MiB" },
+    { "code": "rate_limited", "http": 429, "when": "Hourly or daily cap per key" },
+    { "code": "server_busy", "http": 429, "when": "Concurrent job limit on the instance" },
+    { "code": "processing_failed", "http": 400, "when": "Invalid PDF, wrong password, or qpdf error" },
+    { "code": "method_not_allowed", "http": 405, "when": "Non-POST on PDF routes" },
+    { "code": "not_found", "http": 404, "when": "Unknown path under /api/v1/" },
+    { "code": "accounts_disabled", "http": 503, "when": "No DATABASE_URL on API service" },
+    { "code": "api_on_dedicated_host", "http": 404, "when": "Hit /api/v1 on web tier without proxy (see apiBaseUrl in body)" }
+  ]
+}

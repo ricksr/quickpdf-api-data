@@ -1,0 +1,9 @@
+# Open-data repo only — keep GitHub language stats accurate (no application source).
+* linguist-detectable=false
+*.json linguist-detectable=true linguist-language=JSON
+*.yaml linguist-detectable=true linguist-language=YAML
+*.yml linguist-detectable=true linguist-language=YAML
+*.md linguist-detectable=true linguist-language=Markdown
+*.pdf linguist-vendored
+fixtures/** linguist-vendored
+LICENSE linguist-documentation
